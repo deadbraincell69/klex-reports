@@ -1,0 +1,28 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Blank_A4" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b2be1dd7-9ff7-442e-89ec-5b6783b620e8">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Test_1"/>
+	<query language="csv"><![CDATA[]]></query>
+	<field name="Ship Mode" class="java.lang.String"/>
+	<field name="Segment" class="java.lang.String"/>
+	<field name="Country" class="java.lang.String"/>
+	<field name="City" class="java.lang.String"/>
+	<field name="State" class="java.lang.String"/>
+	<field name="Postal Code" class="java.lang.Integer"/>
+	<field name="Region" class="java.lang.String"/>
+	<field name="Category" class="java.lang.String"/>
+	<field name="Sub-Category" class="java.lang.String"/>
+	<field name="Sales" class="java.math.BigDecimal"/>
+	<field name="Quantity" class="java.lang.Integer"/>
+	<field name="Discount" class="java.lang.Integer"/>
+	<field name="Profit" class="java.math.BigDecimal"/>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch"/>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="61" splitType="Stretch"/>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

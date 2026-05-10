@@ -1,0 +1,8 @@
+name: PostgreSQL Data Adapter
+type: jdbc
+
+config:
+  driver: org.postgresql.Driver
+  url: ${DB_URL_customers}
+  username: ${DB_USER_customers}
+  password: ${DB_PASSWORD_customers}

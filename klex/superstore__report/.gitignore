@@ -1,0 +1,15 @@
+# Jasper compiled files
+*.jasper
+
+# Eclipse / Jaspersoft Studio junk
+.metadata/
+.settings/
+bin/
+target/
+
+# Secrets
+.env
+
+# OS junk
+.DS_Store
+Thumbs.db
