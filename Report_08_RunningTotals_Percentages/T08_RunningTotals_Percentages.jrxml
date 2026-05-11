@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2026-03-11T03:58:09 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="T08_RunningTotals_Percentages" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1e39a2af-24cd-4462-acc1-538debb1912e">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="test8data"/>
+	<queryString language="csv">
+		<![CDATA[]]>
+	</queryString>
+	<field name="SaleID" class="java.lang.String"/>
+	<field name="Region" class="java.lang.String"/>
+	<field name="RepName" class="java.lang.String"/>
+	<field name="Amount" class="java.lang.String"/>
+	<variable name="V_GROUP_SUM" class="java.lang.Double" resetType="Group" resetGroup="RegionGroup" calculation="Sum">
+		<variableExpression><![CDATA[Double.parseDouble($F{Amount}.toString())]]></variableExpression>
+	</variable>
+	<variable name="V_REPORT_SUM" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[Double.parseDouble($F{Amount}.toString())]]></variableExpression>
+	</variable>
+	<variable name="V_RUNNING_TOTAL" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[Double.parseDouble($F{Amount}.toString())]]></variableExpression>
+	</variable>
+	<variable name="V_GROUP_PCT" class="java.lang.Double" resetType="Group" resetGroup="RegionGroup">
+		<variableExpression><![CDATA[($V{V_GROUP_SUM} / $V{V_REPORT_SUM}) * 100]]></variableExpression>
+	</variable>
+	<variable name="V_ROW_NUM" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{SaleID}]]></variableExpression>
+	</variable>
+	<variable name="V_REPORT_TOTAL_FINAL" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{V_REPORT_SUM}]]></variableExpression>
+	</variable>
+	<group name="RegionGroup">
+		<groupExpression><![CDATA[$F{Region}]]></groupExpression>
+		<groupHeader>
+			<band height="38">
+				<staticText>
+					<reportElement x="41" y="5" width="49" height="28" uuid="825d83c9-2499-4717-b577-c8d55f3dbbc4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Region:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="90" y="5" width="99" height="28" uuid="9f671971-ff8c-49bb-a962-313644ca3e2a"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Region}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50">
+				<staticText>
+					<reportElement x="30" y="10" width="70" height="20" uuid="04fdd35b-043b-4814-80fd-b4436bf0f1a1"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Region Total:]]></text>
+				</staticText>
+				<textField evaluationTime="Group" evaluationGroup="RegionGroup" pattern="#,##0.00">
+					<reportElement x="100" y="10" width="60" height="20" uuid="d481c2b0-b7cc-44eb-aacc-072f84bd2ac8"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{V_GROUP_SUM}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="30" y="30" width="70" height="20" uuid="79673d6a-e841-4470-9948-e961b9735fff">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[% of Total:]]></text>
+				</staticText>
+				<textField evaluationTime="Group" evaluationGroup="RegionGroup" pattern="#,##0.00&apos;%&apos;">
+					<reportElement x="100" y="30" width="60" height="20" uuid="7783ed94-f9f9-4d39-bacd-9909029c309d"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{V_GROUP_PCT}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="RegionGroup">
+					<reportElement x="220" y="10" width="171" height="31" uuid="75a57ef9-83a0-475c-b1ea-9660a066e311"/>
+					<textFieldExpression><![CDATA[$V{V_GROUP_SUM} + " / " + $V{V_REPORT_SUM}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="0" width="401" height="61" uuid="4b8e0889-5861-4fd9-bf5b-ea8bc900e15b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[T-08 · Running Totals and Cross-Group Percentages]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="0" width="80" height="25" uuid="ffbd2f1b-6199-42e5-97a1-521f9b897449">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Row#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="0" width="100" height="25" uuid="1531c3ac-44cc-4649-84e9-01bd244bafbb">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[RepName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="0" width="100" height="25" uuid="e168b118-bc17-40cf-911b-c3f952e94e2e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Region]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="0" width="100" height="25" uuid="95cac39e-0017-4323-bd3f-c7c9bb4e05fa">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="0" width="100" height="25" uuid="4e012f9f-efbe-4c42-955d-8ad762ae73bf">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Running Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="15" width="80" height="27" uuid="88211ce9-809e-4494-a68e-c129f52e47d5">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans Mono"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{V_ROW_NUM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="15" width="100" height="27" uuid="d885e372-0994-4fac-9258-9900782bcd7f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{RepName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="15" width="100" height="27" uuid="91849314-474e-45f0-bd93-cfd0effe17f2">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Region}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="310" y="15" width="100" height="27" uuid="be97c575-349e-4851-95c9-3c8981563682">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{Amount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="410" y="15" width="100" height="27" uuid="ada07505-1585-4137-b4bc-99e19c22580f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{V_RUNNING_TOTAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="10" width="100" height="18" uuid="2b79a46d-d7d8-43da-ba18-3481a04659cc"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="10" width="70" height="20" uuid="157affed-432f-4060-a9ff-616aa072bcf6"/>
+				<text><![CDATA[Grand Total:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="110" y="10" width="90" height="20" uuid="4670631d-70fe-4a1a-a0e2-b18fe299a3b3"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{V_REPORT_SUM}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="40" y="30" width="70" height="20" uuid="99019feb-ba8d-46e8-a723-9d897e2ba3a6"/>
+				<text><![CDATA[Total Rows:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="30" width="90" height="20" uuid="b504cf14-2166-4cfe-9a34-f06d36634e1a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{V_ROW_NUM}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

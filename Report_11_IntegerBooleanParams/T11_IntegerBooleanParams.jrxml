@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2026-03-11T19:25:46 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="T11_IntegerBooleanParams" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="94b1fd14-d995-4a6e-b601-28cb967d28df">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="test11data "/>
+	<parameter name="P_MIN_STOCK" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[5]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_SHOW_INACTIVE" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
+	</parameter>
+	<queryString language="csv">
+		<![CDATA[]]>
+	</queryString>
+	<field name="ItemID" class="java.lang.String"/>
+	<field name="ItemName" class="java.lang.String"/>
+	<field name="Category" class="java.lang.String"/>
+	<field name="StockQty" class="java.lang.String"/>
+	<field name="UnitCost" class="java.lang.String"/>
+	<field name="IsActive" class="java.lang.String"/>
+	<variable name="V_ROW_COUNT" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{ItemID}]]></variableExpression>
+	</variable>
+	<variable name="V_TOTAL_STOCK" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[Integer.parseInt($F{StockQty}.toString())]]></variableExpression>
+	</variable>
+	<variable name="V_TOTAL_VALUE" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[Double.parseDouble($F{UnitCost}.toString()) * Integer.parseInt($F{StockQty}.toString())]]></variableExpression>
+	</variable>
+	<filterExpression><![CDATA[Integer.parseInt($F{StockQty}.toString()) >= $P{P_MIN_STOCK}
+&&
+($P{P_SHOW_INACTIVE} == true || $F{IsActive}.equals("true"))]]></filterExpression>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="0" width="400" height="51" uuid="2a552a7b-e99e-492f-91b9-fb9f200a9ede"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[T-11  ·  Integer and Boolean Parameter Handling]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="49" width="404" height="32" uuid="7d9ede4d-c12b-4ca8-9d49-34207b9ca70e"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Min Stock: " + $P{P_MIN_STOCK} + "   |   Show Inactive: " + $P{P_SHOW_INACTIVE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="95" height="20" uuid="4610115e-8da9-4486-b0e0-03b0967e4345">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ItemID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="0" width="92" height="20" uuid="303170c2-993b-452a-857a-a16a9300d778"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ItemName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="187" y="0" width="92" height="20" uuid="039eea63-32a2-432c-9e20-a8fa35ba4bb7"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Category]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="92" height="20" uuid="d88fe83e-d9d4-48fc-945a-b9429bb47eef"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[StockQty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="0" width="92" height="20" uuid="7d23c0d3-5277-4c1c-b940-d9b88dbf8601"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[UnitCost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="463" y="0" width="92" height="20" uuid="58e0d3e8-c160-4e8f-a4f0-904311644ba4"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[IsActive]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="95" height="30" uuid="9613c390-533f-46ee-acd3-9f5ae333e811"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ItemID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="0" width="92" height="30" uuid="cf48cb81-2d1a-438a-b116-42107d011095"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ItemName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="187" y="0" width="92" height="30" uuid="f9b0217c-4b9e-4ec8-8c67-6a0d6bb9c5a5"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Category}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="0" width="92" height="30" uuid="f6989aae-cd1c-49e1-9ec1-f39261044dd1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{StockQty}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="371" y="0" width="92" height="30" uuid="cee79da5-eadb-4895-a440-eb7c2fefa62c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{UnitCost}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="463" y="0" width="92" height="30" uuid="ff66a7f2-182c-4fbd-bc7d-7b360690990b"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{IsActive}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="130" height="31" uuid="26fa6837-bdfd-4c2b-9b7d-2f1003b5f4a9"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="80" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement x="0" y="5" width="100" height="21" uuid="abc571b6-2418-477a-979a-8c767924bf3a"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Total Items Shown:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="26" width="100" height="21" uuid="044cf90b-1e44-4530-b123-9d4bdca57dcd"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Total Stock Units:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="47" width="100" height="21" uuid="846e752d-b37f-4961-8c75-102634776c89">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Total Inventory Value:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="5" width="101" height="21" uuid="33d60ea9-760f-4fc1-8b83-bad30cde76b1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{V_ROW_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="26" width="101" height="21" uuid="204daab7-9168-4347-85dd-e8ad7be1da5e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{V_TOTAL_STOCK}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="100" y="47" width="101" height="21" uuid="a56296b2-36dd-4032-b874-f2d465768de4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{V_TOTAL_VALUE}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="4" width="202" height="1" uuid="9799674e-5ce2-4618-b38f-7a3dd3fa9c4e"/>
+			</line>
+			<line>
+				<reportElement x="1" y="68" width="201" height="1" uuid="b7728848-12fc-4c0e-bc3b-3a9378df3c52"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

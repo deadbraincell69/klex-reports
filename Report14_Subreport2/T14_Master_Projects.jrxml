@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2026-03-15T01:21:20 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="T14_Master_Projects" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3763957e-4243-4242-a31c-bdd94a39142a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="subreporttest"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT proj_id, proj_name, start_date, due_date
+FROM projects
+ORDER BY proj_id]]>
+	</queryString>
+	<field name="proj_id" class="java.lang.String"/>
+	<field name="proj_name" class="java.lang.String"/>
+	<field name="start_date" class="java.lang.String"/>
+	<field name="due_date" class="java.lang.String"/>
+	<variable name="V_PROJ_COUNT" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{proj_id}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="41" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement x="80" y="0" width="400" height="20" uuid="c35d47e9-57f3-40f7-a3f0-913fe337f381">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[T-14  ·  Subreport — Empty Dataset Handling]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="20" width="401" height="21" uuid="d08029af-927a-45e9-8a5f-4b658b41a326"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Beta project has no tasks — NoData band must fire without exception]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement x="400" y="2" width="155" height="18" uuid="84d9a0a3-a989-49d2-9a0a-061691fd30b9">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="158" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<rectangle>
+				<reportElement x="65" y="0" width="420" height="22" backcolor="#1B3A6B" uuid="9fb93d7a-fd9c-4cc3-bc96-559e54591749">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="70" y="0" width="50" height="22" forecolor="#FFFFFF" uuid="7220f6e6-7eb2-45f4-852d-87c5ff806b6f">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Project:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="0" width="91" height="22" forecolor="#FFFFFF" uuid="6d541f57-5ec1-4e96-b51e-2e13735484d3">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proj_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="80" height="22" forecolor="#FFFFFF" uuid="f7daf28c-bc2c-4b89-ad37-7b686527e689">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{start_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="241" y="0" width="35" height="22" forecolor="#AACCEE" uuid="d2eead7f-a53e-45ae-b534-68f28d943356">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Start:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="0" width="30" height="22" forecolor="#AACCEE" uuid="eac77133-c38f-457d-944a-bdd867a8e4f6">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Due:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="416" y="0" width="64" height="22" forecolor="#FFFFFF" uuid="fdb9f4b6-56e0-4477-b78a-f7915c4aa6a7">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{due_date}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="65" y="25" width="420" height="125" uuid="90d37210-e036-4649-9407-462958015e55">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<subreportParameter name="P_PROJ_ID">
+					<subreportParameterExpression><![CDATA[$F{proj_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:/Users/heyas/JaspersoftWorkspace/MyReports/T14_Child_Tasks.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement x="400" y="2" width="155" height="18" uuid="05c9d235-6328-4e51-9b5d-703d5393fa53">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="60" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement x="226" y="0" width="110" height="20" uuid="00f414d9-c28e-4681-b38e-27b0a7418aab"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Report Complete]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="201" y="20" width="160" height="20" uuid="e48507c2-7ccb-4dcf-8709-15ad800fabf7"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total Projects: " + $V{V_PROJ_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="141" y="40" width="280" height="20" uuid="3ba8bd84-b653-4002-8913-d5c4368445b0"/>
+				<textElement textAlignment="Center">
+					<font size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Verify: Alpha=3 tasks | Beta=No tasks found | Gamma=2 tasks]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

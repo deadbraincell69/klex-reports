@@ -1,0 +1,120 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="leaning_2" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e895b7b-edba-4edd-95da-7683eee599f1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="superstore_learn"/>
+	<query language="sql"><![CDATA[SELECT region,
+	category,
+	SUM( sales) AS total_sales,
+	SUM( profit) AS total_profit
+FROM superstore
+GROUP BY superstore.region,
+	superstore.category
+ORDER BY superstore.region DESC,
+	superstore.category DESC]]></query>
+	<field name="region" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="region"/>
+		<property name="com.jaspersoft.studio.field.label" value="region"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="superstore"/>
+	</field>
+	<field name="category" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="category"/>
+		<property name="com.jaspersoft.studio.field.label" value="category"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="superstore"/>
+	</field>
+	<field name="total_sales" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="total_sales"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_sales"/>
+	</field>
+	<field name="total_profit" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="total_profit"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_profit"/>
+	</field>
+	<group name="grp_region_category">
+		<expression><![CDATA[$F{region} + "-" + $F{category}
+]]></expression>
+		<groupHeader>
+			<band height="30"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="56">
+				<element kind="subreport" uuid="23af5fde-f847-4059-b22e-f6b0c76140cb" x="3" y="0" width="551" height="56" usingCache="false">
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<expression><![CDATA["category_details_subreport.jrxml"]]></expression>
+					<parameter name="region">
+						<expression><![CDATA[$F{region}]]></expression>
+					</parameter>
+					<parameter name="category">
+						<expression><![CDATA[$F{category}]]></expression>
+					</parameter>
+				</element>
+			</band>
+		</groupFooter>
+	</group>
+	<background splitType="Stretch"/>
+	<title height="59" splitType="Stretch">
+		<element kind="rectangle" uuid="45c8b750-4846-42f2-8b6f-4ec478488791" x="1" y="-20" width="98" height="66" backcolor="#FFFFFF"/>
+		<element kind="image" uuid="6066d1a2-d55e-4014-a853-966d3cb92017" x="17" y="-10" width="67" height="43" backcolor="#122DFC" hImageAlign="Center" vImageAlign="Middle">
+			<expression><![CDATA["images/logo.png"]]></expression>
+		</element>
+		<element kind="staticText" uuid="05b27671-be23-4d5d-b726-12103277db3a" x="135" y="2" width="420" height="30" forecolor="#2130FF" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Advanced reporting of the shop]]></text>
+		</element>
+		<element kind="staticText" uuid="15d87177-f16e-46ae-ae14-57036a335c9c" x="326" y="32" width="147" height="14" forecolor="#489DF7" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Subreports under one report]]></text>
+		</element>
+		<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+	</title>
+	<pageHeader height="31" splitType="Stretch"/>
+	<columnHeader height="30" splitType="Stretch">
+		<element kind="staticText" uuid="9970695c-d440-4848-a1db-878a699edc1c" x="3" y="0" width="138" height="30" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[region]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3dfc765e-6847-417b-bc8a-d33a7fa0fcb3"/>
+		</element>
+		<element kind="staticText" uuid="7e12a68b-fd98-47e5-8adc-0c987805c55c" x="144" y="0" width="135" height="30" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[category]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a39093c6-ef07-4a7b-848c-f40e4be257a0"/>
+		</element>
+		<element kind="staticText" uuid="3b574b3a-ca2e-444f-9305-a37c2a81125f" x="282" y="0" width="135" height="30" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[total_sales]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e1bb2a0e-f8a5-4db1-a218-0de766917f1c"/>
+		</element>
+		<element kind="staticText" uuid="56ec2d5a-9803-44fd-b891-ca0c591e82e5" x="420" y="0" width="135" height="30" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[total_profit]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9ac9df48-4180-45ed-8d10-274179c7a8c6"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="48" splitType="Stretch">
+			<element kind="textField" uuid="0814a101-b8d0-4ef3-8290-fe0dc9de42dd" x="0" y="0" width="138" height="48" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{region}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3dfc765e-6847-417b-bc8a-d33a7fa0fcb3"/>
+			</element>
+			<element kind="textField" uuid="a78ba470-dd45-4be4-8253-81a678a7d4bb" x="138" y="0" width="135" height="48" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{category}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a39093c6-ef07-4a7b-848c-f40e4be257a0"/>
+			</element>
+			<element kind="textField" uuid="c9990074-a20c-4968-91a3-2b0d03a72dc2" x="273" y="0" width="135" height="48" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{total_sales}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e1bb2a0e-f8a5-4db1-a218-0de766917f1c"/>
+			</element>
+			<element kind="textField" uuid="0befc3c0-0dcf-4f0f-852f-2d4fa09de5fa" x="408" y="0" width="135" height="48" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{total_profit}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9ac9df48-4180-45ed-8d10-274179c7a8c6"/>
+			</element>
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.spreadsheet.SpreadsheetLayout"/>
+		</band>
+	</detail>
+	<columnFooter height="19" splitType="Stretch">
+		<element kind="component" uuid="0ae9f472-2fa7-4859-8b5e-cc0fe20109d3" x="229" y="0" width="97" height="19">
+			<component kind="barbecue" type="Code128C" drawText="false" checksumRequired="false">
+				<codeExpression><![CDATA["1234"]]></codeExpression>
+			</component>
+		</element>
+	</columnFooter>
+	<pageFooter height="47" splitType="Stretch"/>
+	<summary height="30" splitType="Stretch">
+		<element kind="staticText" uuid="acd67a5b-057c-45b4-9583-2bdea17d0497" x="80" y="0" width="399" height="30" forecolor="#FF0512" fontSize="22.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[****THE END****]]></text>
+		</element>
+	</summary>
+</jasperReport>
